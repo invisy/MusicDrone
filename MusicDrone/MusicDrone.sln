@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{F8568D15-B713-4871-BF71-AAE0D08E7798}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{8FA79111-0C40-45A2-BB95-D2FA96C14FDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{F0066F26-DE5F-49A0-A917-F0F545424354}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8568D15-B713-4871-BF71-AAE0D08E7798}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8568D15-B713-4871-BF71-AAE0D08E7798}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8568D15-B713-4871-BF71-AAE0D08E7798}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8568D15-B713-4871-BF71-AAE0D08E7798}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FA79111-0C40-45A2-BB95-D2FA96C14FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FA79111-0C40-45A2-BB95-D2FA96C14FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FA79111-0C40-45A2-BB95-D2FA96C14FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FA79111-0C40-45A2-BB95-D2FA96C14FDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0066F26-DE5F-49A0-A917-F0F545424354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0066F26-DE5F-49A0-A917-F0F545424354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0066F26-DE5F-49A0-A917-F0F545424354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0066F26-DE5F-49A0-A917-F0F545424354}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {23A4AA09-1D03-4E68-B729-E3AEE1B49E6F}
+	EndGlobalSection
+EndGlobal
