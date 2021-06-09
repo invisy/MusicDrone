@@ -1,0 +1,28 @@
+version: '3.4'
+
+services:
+  ms-sql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+        SA_PASSWORD: "suPerSecret5Assword"
+        ACCEPT_EULA: "Y"
+        MSSQL_PID: Express
+    ports:
+        - "1433:1433"
+ 
+  identity-api:
+    image: ${REGISTRY:-eshop}/identity.api:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Services/Identity/Identity.API/Dockerfile
+    depends_on:
+      - ms-sql
+
+  webspa:
+    image: ${REGISTRY:-eshop}/webspa:${PLATFORM:-linux}-${TAG:-latest}
+    build:
+      context: .
+      dockerfile: Web/React/Dockerfile
+      args:
+        NODE_IMAGE: ${NODE_IMAGE:-node:10.13}
+    depends_on:
