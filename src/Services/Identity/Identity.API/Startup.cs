@@ -84,7 +84,7 @@ namespace Identity.API
                     .RequireAuthenticatedUser()
                     .Build();
             });
-            
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -102,7 +102,7 @@ namespace Identity.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Identity.API v1"));
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

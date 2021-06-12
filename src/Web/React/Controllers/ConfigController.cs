@@ -12,7 +12,7 @@ namespace React.Controllers
         private readonly IWebHostEnvironment _env;
         private readonly IOptionsSnapshot<AppSettings> _settings;
         
-        ConfigController(IWebHostEnvironment env, IOptionsSnapshot<AppSettings> settings)
+        public ConfigController(IWebHostEnvironment env, IOptionsSnapshot<AppSettings> settings)
         {
             _env = env;
             _settings = settings;
