@@ -132,7 +132,7 @@ class SignIn extends Component {
     try {
       const result = await AuthService.login(email, password, remember);
       if(result.status === 200)
-        window.location.href = "/sensors";
+        window.location.href = "/";
       else
       {
         await this.setState({
