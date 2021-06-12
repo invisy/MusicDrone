@@ -21,7 +21,6 @@ services:
       DbUser: "sa"
       DbPassword: "suPerSecret5Assword"
       IdentityDatabase: "MusicDroneIdentityDb"
-      IdentityUrl: "http://invisy.westeurope.cloudapp.azure.com/identity-api"
     depends_on:
       - ms-sql
     ports:
@@ -32,6 +31,8 @@ services:
     build:
       context: .
       dockerfile: Web/React/Dockerfile
+    environment:
+      IdentityUrl: "http://invisy.westeurope.cloudapp.azure.com/identity-api"
     depends_on:
       - identity-api
     ports:
