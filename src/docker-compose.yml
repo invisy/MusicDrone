@@ -11,18 +11,35 @@ services:
         - "1433:1433"
  
   identity-api:
-    image: ${REGISTRY:-eshop}/identity.api:${PLATFORM:-linux}-${TAG:-latest}
+    image: musicdrone/identity.api:latest
     build:
       context: .
       dockerfile: Services/Identity/Identity.API/Dockerfile
+    environment:
+      DbServer: tcp:ms-sql
+      DbPort: "1433"
+      DbUser: "sa"
+      DbPassword: "suPerSecret5Assword"
+      IdentityDatabase: "MusicDroneIdentityDb"
+      IdentityUrl: "http://invisy.westeurope.cloudapp.azure.com/identity-api"
     depends_on:
       - ms-sql
+    ports:
+      - "80"
 
   webspa:
-    image: ${REGISTRY:-eshop}/webspa:${PLATFORM:-linux}-${TAG:-latest}
+    image: musicdrone/WebSPA:latest
     build:
       context: .
       dockerfile: Web/React/Dockerfile
-      args:
-        NODE_IMAGE: ${NODE_IMAGE:-node:10.13}
     depends_on:
+      - identity-api
+    ports:
+      - "80"
+
+  envoygateway:
+    image: envoyproxy/envoy-dev:0ab3cfe82a7fed78316929e7225fe17f6791707f
+    ports:
+      - "80:80"
+    volumes:
+      - ./ApiGateways/Envoy/envoy.yaml:/etc/envoy/envoy.yaml
