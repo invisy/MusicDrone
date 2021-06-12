@@ -28,7 +28,7 @@ services:
       - "80"
 
   webspa:
-    image: musicdrone/WebSPA:latest
+    image: musicdrone/webspa:latest
     build:
       context: .
       dockerfile: Web/React/Dockerfile
