@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Collapse, Container, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './NavMenu.css';
+import AuthService from "../services/auth.service";
 
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
@@ -21,7 +22,16 @@ export class NavMenu extends Component {
     });
   }
 
+  logOut() {
+    AuthService.logout();
+    this.setState({
+      user: AuthService.getCurrentUser()
+    });
+  }
+
   render () {
+    const { user } = this.state;
+    
     return (
       <header>
         <Navbar className="navbar-expand-sm navbar-toggleable-sm ng-white border-bottom box-shadow mb-3" light>
@@ -33,12 +43,18 @@ export class NavMenu extends Component {
                 <NavItem>
                   <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
                 </NavItem>
+                {!user &&
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/counter">Counter</NavLink>
-                </NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/sign-in">Sign In</NavLink>
+                </NavItem> }
+                {!user &&
                 <NavItem>
-                  <NavLink tag={Link} className="text-dark" to="/fetch-data">Fetch data</NavLink>
-                </NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/sign-up">Sign Up</NavLink>
+                </NavItem> }
+                {user &&
+                <NavItem>
+                  <NavLink tag={Link} className="text-dark" to="/" onClick={this.logOut}>Logout</NavLink>
+                </NavItem> }
               </ul>
             </Collapse>
           </Container>
