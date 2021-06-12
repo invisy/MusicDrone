@@ -12,10 +12,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src
-COPY ["Web/React/React.csproj", "React/"]
+COPY ["Web/React/React.csproj", "Web/React/"]
 RUN dotnet restore "Web/React/React.csproj"
 COPY . .
-WORKDIR "/src/React"
+WORKDIR "/src/Web/React"
 RUN dotnet build "React.csproj" -c Release -o /app/build
 
 FROM build AS publish
