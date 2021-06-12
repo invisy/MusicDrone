@@ -28,6 +28,7 @@ namespace Identity.API.Controllers
             _tokenClaimsService = tokenClaimsService;
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<LoginResponse>> Login(LoginRequest credentials)
         {
@@ -60,6 +61,7 @@ namespace Identity.API.Controllers
             return Ok(profile);
         }
         
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult<LoginResponse>> RegisterUser(RegisterRequest request)
         {
