@@ -1,0 +1,30 @@
+name: Identity Service Build
+on: 
+  push:
+    branches: [ master ]
+    paths:
+    - src/Services/Identity/**
+    - .github/workflows/identity-service.yml
+    
+  pull_request:
+    branches: [ master ]
+    paths:
+    - src/Services/Identity/**
+    - .github/workflows/identity-service.yml
+    
+jobs:
+  Build_identity-api_service:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+            dotnet-version: '5.0.x'
+      - name: Install dependencies
+        run: dotnet restore
+        working-directory: ./src/Services/Identity/Identity.API
+      - name: Build
+        run: dotnet build -c Release --no-restore
+        working-directory: ./src/Services/Identity/Identity.API

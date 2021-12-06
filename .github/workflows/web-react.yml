@@ -1,0 +1,29 @@
+name: Web React Build
+on: 
+  push:
+    branches: [ master ]
+    paths:
+    - src/Web/React/ClientApp/**
+    - .github/workflows/web-react.yml
+    
+  pull_request:
+    branches: [ master ]
+    paths:
+    - src/Web/React/ClientApp/**
+    - .github/workflows/web-react.yml
+    
+jobs:
+  Build_web-react:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn
+        working-directory: ./src/Web/React/ClientApp
+      - name: Build
+        run: yarn build
+        working-directory: ./src/Web/React/ClientApp
+      - name: Test
+        run: yarn test --watchAll=false
+        working-directory: ./src/Web/React/ClientApp
