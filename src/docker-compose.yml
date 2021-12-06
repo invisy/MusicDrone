@@ -26,6 +26,18 @@ services:
     ports:
       - "80"
 
+  webspa:
+    image: musicdrone/webspa:latest
+    build:
+      context: .
+      dockerfile: Web/React/Dockerfile
+    environment:
+      IdentityUrl: "http://invisy.westeurope.cloudapp.azure.com/identity-api"
+    depends_on:
+      - identity-api
+    ports:
+      - "80"
+
   envoygateway:
     image: musicdrone/gateway:latest
     build:
