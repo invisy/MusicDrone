@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  envoygateway:
+    image: musicdrone/gateway:latest
+    build:
+      context: .
+      dockerfile: ApiGateways/Envoy/Dockerfile
+    ports:
+      - "80:8080"
