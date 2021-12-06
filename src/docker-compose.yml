@@ -1,6 +1,31 @@
 version: '3.4'
 
 services:
+  ms-sql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+        SA_PASSWORD: "suPerSecret5Assword"
+        ACCEPT_EULA: "Y"
+        MSSQL_PID: Express
+    ports:
+        - "1433:1433"
+ 
+  identity-api:
+    image: musicdrone/identity.api:latest
+    build:
+      context: .
+      dockerfile: Services/Identity/Identity.API/Dockerfile
+    environment:
+      DbServer: tcp:ms-sql
+      DbPort: "1433"
+      DbUser: "sa"
+      DbPassword: "suPerSecret5Assword"
+      IdentityDatabase: "MusicDroneIdentityDb"
+    depends_on:
+      - ms-sql
+    ports:
+      - "80"
+
   envoygateway:
     image: musicdrone/gateway:latest
     build:
