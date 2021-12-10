@@ -3,18 +3,16 @@ on:
   push:
     branches: [ master ]
     paths:
-    - src/Web/React/**
-    - .github/workflows/web-backend.yml
-    paths-ignore:
-    - src/Web/React/ClientApp/**
+    - 'src/Web/React/**'
+    - '.github/workflows/web-backend.yml'
+    - '!src/Web/React/ClientApp/**'
     
   pull_request:
     branches: [ master ]
     paths:
-    - src/Web/React/**
-    - .github/workflows/web-backend.yml
-    paths-ignore:
-    - src/Web/React/ClientApp/**
+    - 'src/Web/React/**'
+    - '.github/workflows/web-backend.yml'
+    - '!src/Web/React/ClientApp/**'
     
 jobs:
   Build_web-backend:
